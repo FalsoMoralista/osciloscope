@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "/Users/lucianofilho/Desktop/git/osciloscope"
+		}
+	],
+	"settings": {
+		"go.autocompleteUnimportedPackages": true,
+		"go.autocompleteImportedPackages": true
+	}
+}
