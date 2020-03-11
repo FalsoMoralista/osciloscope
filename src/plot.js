@@ -1,12 +1,11 @@
-
-response = setInterval(consume(),2000);
-
-var voltage = document.getElementById('h2');
-voltage.innerHTML = response;
+setInterval(consume,50);
 
 function consume(){
-    fetch("localhost:8081/consume")
+    fetch("./consume")
     .then((response) => {
-        return response.text();
+        var voltage = document.getElementById('voltage');
+        const body = response.json().then((result)=>{
+            voltage.innerHTML = result["Voltage"]
+        })
     })
 }

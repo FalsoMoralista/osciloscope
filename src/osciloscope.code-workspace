@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"go.autocompleteUnimportedPackages": true,
-		"go.autocompleteImportedPackages": true
+		"go.autocompleteImportedPackages": true,
+		"go.installDependenciesWhenBuilding": false
 	}
 }
