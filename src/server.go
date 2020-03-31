@@ -3,17 +3,12 @@ package main
 import (
 	"math/rand"
 	"strconv"
-
-	"golang.org/x/exp/io/i2c"
 )
 
 var buffer chan string
 
-func main() {
-	buffer = make(chan string, 10)
-	go produce()
-}
-
+// Generate random numbers between 0 & 5 and put them into a (channel) buffer.
+// The process locks down when the buffer is full. 
 func produce() {
 	min := 0
 	max := 5
@@ -21,15 +16,22 @@ func produce() {
 		n := rand.Intn(max - min)
 		data := strconv.Itoa(n)
 		buffer <- data
-		// println("produced: ", n)
-		// time.Sleep(50 * time.Millisecond)
+		println("produced: ", n)
 	}
 }
 
-func consume() {
-	var data = <-buffer
+// Consumes the data from the buffer.
+// Process locks down when the buffer is cleared.
+func consume() { 
+	for {
+		var data = <-buffer // TODO: Send consumed data through a socket.
+		println("Consumed", data)
+	}
 }
 
-func openDeviceFile() {
-	d, _ := i2c.Open(&i2c.Devfs{Dev: ""}, 0x39)
+// Allocates the buffer and starts threads to produce and consume respectively.
+func main() {
+	buffer = make(chan string, 10)
+	go produce()
+	go consume()
 }
