@@ -38,7 +38,6 @@ ax = fig.add_subplot(1,1,1)
 
 def animate(i):
     ystr = con.recv(1024).decode()
-    print(ystr)
     y = int(ystr)
     xs.append(next(x))
     ys.append(y)
