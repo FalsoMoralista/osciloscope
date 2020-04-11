@@ -1,9 +1,8 @@
 import socket 
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from matplotlib import style
-
+from matplotlib.animation import FuncAnimation
+from itertools import count
 #####CONNECTION#####
 host = '127.0.0.1'
 port = 7000
@@ -27,34 +26,28 @@ print ("aguardando mensagem")
 #####END CONNECTION############
 
 ########GRAPH##################
-style.use('fivethirtyeight')
 
-fig = plt.figure()
-ax1 = fig.add_subplot(1, 1, 1)
+plt.style.use('fivethirtyeight')
+
+#fig = plt.figure()
+#ax1 = fig.add_subplot(1, 1, 1)
+
+x = count()
+xs = []
+ys = []
 
 def animate(i):
-    xs = []
-    ys = []
-    y = 0
-    while True:
-        xstr = con.recv(1024).decode()
-        x = int(xstr)
-        xs.append(x)
-        ys.append(y)
-        ax1.plot(xs, ys)
-        ani = animation.FuncAnimation(fig, animate, interval=1000)
-        plt.show()
-        y = y + 1
-        plt.pause(0.0001)
-#    ax1.clear()
-#    ax1.plot(xs, ys)
-serv_socket.close()
-'''
-while True:
-    recebe = con.recv(1024).decode()
-    xstr, ystr = recebe.split(",")
-    xint = int(xstr)
-    print (xint)
-'''
+    ystr = con.recv(1024).decode()
+    y = int(ystr)
+    xs.append(next(x))
+    ys.append(y)
+    plt.cla()
+    plt.plot(xs, ys, label='Channel 1')
+    plt.legend(loc='upper left')
 
+
+ani = FuncAnimation(plt.gcf(), animate, interval=1)
+plt.tight_layout()
+plt.show()
+    
 #Sserv_socket.close()
