@@ -13,7 +13,7 @@ var buffer chan string
 // The process locks down when the buffer is full.
 func produce() {
 	min := 0
-	max := 5
+	max := 2
 	for {
 		n := rand.Intn(max - min)
 		println(n)
@@ -38,7 +38,7 @@ func send() {
 	for {
 		var data = <-buffer
 		conn.Write([]byte(data))
-		time.Sleep(time.Millisecond * 100 )
+		time.Sleep(time.Millisecond * 500)
 	}
 }
 
