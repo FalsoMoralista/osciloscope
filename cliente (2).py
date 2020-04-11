@@ -29,24 +29,29 @@ print ("aguardando mensagem")
 
 plt.style.use('fivethirtyeight')
 
-#fig = plt.figure()
-#ax1 = fig.add_subplot(1, 1, 1)
-
 x = count()
 xs = []
 ys = []
 
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+
 def animate(i):
     ystr = con.recv(1024).decode()
+    print(ystr)
     y = int(ystr)
     xs.append(next(x))
     ys.append(y)
     plt.cla()
     plt.plot(xs, ys, label='Channel 1')
+    plt.grid(True)
+    ax.set_title('Osciloscope')
+    ax.set_ylabel('Voltage')
+    ax.set_xlabel('Time (ms)')
+    ax.set_ylim(-5000,5000)
     plt.legend(loc='upper left')
 
-
-ani = FuncAnimation(plt.gcf(), animate, interval=1)
+ani = FuncAnimation(plt.gcf(), animate, interval=500)
 plt.tight_layout()
 plt.show()
     
