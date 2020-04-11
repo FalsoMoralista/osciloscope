@@ -35,24 +35,20 @@ ax1 = fig.add_subplot(1, 1, 1)
 def animate(i):
     xs = []
     ys = []
-
-    for i in range(1, 10):
-        recebe = con.recv(1024).decode()
-        xstr, ystr = recebe.split(",")
+    y = 0
+    while True:
+        xstr = con.recv(1024).decode()
         x = int(xstr)
-        y = int(ystr)
-
         xs.append(x)
         ys.append(y)
-
-    ax1.clear()
-    ax1.plot(xs, ys)
-
-ani = animation.FuncAnimation(fig, animate, interval=1000)
+        ax1.plot(xs, ys)
+        ani = animation.FuncAnimation(fig, animate, interval=1000)
+        plt.show()
+        y = y + 1
+        plt.pause(0.0001)
+#    ax1.clear()
+#    ax1.plot(xs, ys)
 serv_socket.close()
-plt.show()
-
-
 '''
 while True:
     recebe = con.recv(1024).decode()
