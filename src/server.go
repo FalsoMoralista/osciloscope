@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"net"
 	"strconv"
-	"time"
+//	"time"
 )
 
 var buffer chan string
@@ -13,10 +13,9 @@ var buffer chan string
 // The process locks down when the buffer is full.
 func produce() {
 	min := 0
-	max := 2
+	max := 6
 	for {
 		n := rand.Intn(max - min)
-		println(n)
 		data := strconv.Itoa(n)
 		buffer <- data
 	}
@@ -38,13 +37,13 @@ func send() {
 	for {
 		var data = <-buffer
 		conn.Write([]byte(data))
-		time.Sleep(time.Millisecond * 500)
+//		time.Sleep(time.Millisecond * 1)
 	}
 }
 
 // Allocates the buffer and starts threads to produce and consume respectively.
 func main() {
-	buffer = make(chan string, 100)
+	buffer = make(chan string, 10000)
 	go produce()
 	go send()
 	for {
