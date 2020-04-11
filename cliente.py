@@ -25,11 +25,11 @@ con, cliente = serv_socket.accept()
 print ('conectado') 
 print ("aguardando mensagem")
 
+y = 0
 while True:
-    recebe = con.recv(1024).decode()
-    xstr, ystr = recebe.split(",")
+    xstr = con.recv(1024).decode()
     x = int(xstr)
-    y = int(ystr)
-    print (x + y)
-
+    print (x, y)
+    y = y + 1
+    
 serv_socket.close()
