@@ -36,11 +36,9 @@ def animate(i):
     ax.set_title('Osciloscope')
     ax.set_ylabel('Voltage')
     ax.set_xlabel('Time (ms)')
-#    ax.set_ylim(-5,6)
     x[0] += 1
-#    plt.legend(loc='upper left')
 ani = FuncAnimation(plt.gcf(), animate, interval=0)
 plt.tight_layout()
 plt.show()
-    
-#Sserv_socket.close()
+
+

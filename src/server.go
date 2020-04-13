@@ -37,7 +37,6 @@ func send() {
 	for {
 		var data = <-buffer
 		conn.Write([]byte(data))
-		//		time.Sleep(time.Millisecond * 1)
 	}
 }
 
