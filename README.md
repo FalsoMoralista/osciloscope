@@ -29,6 +29,22 @@ Como mencionado anteriormente, a comunicacao com o cliente é realizado através
   <img  src="https://i.imgur.com/2jWnM1T.png" alt="Osciloscope" style="width: 480px">
 </p>
 
+## Dependências
+Faça o download da Linguagem de programação **Go** no [site](https://golang.org/) oficial, Siga os passos para instalação através deste [link](https://golang.org/doc/install).  
+
+Siga as instruções para instalação do matplotlib:
+
+```
+python -m pip install -U pip
+python -m pip install -U matplotlib
+```
+
+## Instruções para execução
+```
+$ python cliente.py
+$ go build server.go
+$ ./server
+```
 # Tecnologias utilizadas
 <p align="center">
   <img  src="https://golang.org/lib/godoc/images/footer-gopher.jpg" alt="Osciloscope">
