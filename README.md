@@ -35,8 +35,8 @@ Faça o download da Linguagem de programação **Go** no [site](https://golang.o
 Siga as instruções para instalação do matplotlib:
 
 ```
-python -m pip install -U pip
-python -m pip install -U matplotlib
+$ python -m pip install -U pip
+$ python -m pip install -U matplotlib
 ```
 
 ## Instruções para execução
