@@ -37,3 +37,10 @@ Como mencionado anteriormente, a comunicacao com o cliente é realizado através
 <p align="center">
   <img  src="https://www.python.org/static/img/python-logo.png" alt="Osciloscope">
 </p>
+
+# Contribuidores 
+<a href="https://github.com/FalsoMoralista/osciloscope/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=FalsoMoralista/osciloscope" />
+</a>
+
+Made with [contributors-img](https://contributors-img.web.app).
